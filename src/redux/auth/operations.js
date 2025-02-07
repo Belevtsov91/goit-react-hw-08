@@ -39,16 +39,16 @@ export const logoutThunk = createAsyncThunk("logout", async(credentials, thunkAP
 })
 
 
-export const getMeThunk = createAsyncThunk("getMe", async(credentials, thunkAPI) => {
+export const getMeThunk = createAsyncThunk("getMe", async (_, thunkAPI) => { 
     const savedToken = thunkAPI.getState().auth.token;
-    if(savedToken === null){
-        return thunkAPI.rejectWithValue("Token is not correct")
+    if (!savedToken) {
+        return thunkAPI.rejectWithValue("Token is not found");
     }
-    try{
-        setToken(savedToken)
+    try {
+        setToken(savedToken); 
         const { data } = await apiContacts.get("/users/current");
         return data;
-    }catch(e){
+    } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
     }
-})
+});
