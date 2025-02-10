@@ -7,15 +7,24 @@ import { apiContacts } from "../../../config/api";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchContacts",
-  async (_, thunkApi) => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token; 
+
+    if (!token) {
+      return thunkAPI.rejectWithValue("No token found. Please log in again.");
+    }
+
     try {
-      const { data } = await apiContacts.get("contacts");
+      apiContacts.defaults.headers.common.Authorization = `Bearer ${token}`; 
+      const { data } = await apiContacts.get("/contacts");
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 
 export const deleteContactsThunk = createAsyncThunk(
   "contacts/deleteContact",

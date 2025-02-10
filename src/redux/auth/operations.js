@@ -4,48 +4,64 @@ import { apiContacts, clearToken, setToken } from "../../../config/api";
 
 
 
-export const registerThunk = createAsyncThunk("register", async(credentials, thunkAPI) => {
-    try{
+export const registerThunk = createAsyncThunk("register", async (credentials, thunkAPI) => {
+    try {
         const { data } = await apiContacts.post("/users/signup", credentials);
-        setToken(data.token);
-        return data;
-    }catch(e){
-        return thunkAPI.rejectWithValue(e.message);
-    }
-})
-
-
-
-export const loginThunk = createAsyncThunk("login", async(credentials, thunkAPI) => {
-    try{
-        const { data } = await apiContacts.post("/users/login", credentials);
-        setToken(data.token)
-
-        return data;
-    }catch(e){
+        setToken(data.token); 
+        return { user: data.user, token: data.token }; 
+    } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
     }
 });
 
 
 
-export const logoutThunk = createAsyncThunk("logout", async(credentials, thunkAPI) => {
-    try{
-        await apiContacts.post("/users/logout");
-        clearToken();
-    }catch(e){
+export const loginThunk = createAsyncThunk("login", async (credentials, thunkAPI) => {
+    try {
+        const { data } = await apiContacts.post("/users/login", credentials);
+        setToken(data.token);
+        return { user: data.user, token: data.token }; 
+    } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
     }
-})
+});
 
 
-export const getMeThunk = createAsyncThunk("getMe", async (_, thunkAPI) => { 
-    const savedToken = thunkAPI.getState().auth.token;
-    if (!savedToken) {
-        return thunkAPI.rejectWithValue("Token is not found");
+export const fetchContacts = createAsyncThunk("contacts/fetchAll", async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.token;
+    if (!token) {
+        return thunkAPI.rejectWithValue("No token found");
     }
+
     try {
-        setToken(savedToken); 
+        setToken(token); // ✅ Устанавливаем токен
+        const { data } = await apiContacts.get("/contacts");
+        return data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    }
+});
+
+
+export const logoutThunk = createAsyncThunk("logout", async (_, thunkAPI) => {
+    try {
+        await apiContacts.post("/users/logout");
+        clearToken(); 
+        return { user: null, token: null }; 
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    }
+});
+
+
+export const getMeThunk = createAsyncThunk("getMe", async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.token;
+    if (!token) {
+        return thunkAPI.rejectWithValue("Token is missing"); 
+    }
+
+    try {
+        setToken(token); 
         const { data } = await apiContacts.get("/users/current");
         return data;
     } catch (e) {
