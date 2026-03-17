@@ -1,47 +1,55 @@
-.header{
-    background-color: darkgrey;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 6px 6px 16px;
+  background: rgba(79, 70, 229, 0.05);
+  border: 1px solid rgba(79, 70, 229, 0.12);
+  border-radius: var(--r-lg);
+  animation: fadeIn 0.4s var(--ease) both;
 }
 
-.list{
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    justify-content: center;
+.greeting {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-3);
 }
 
-.listItem{
-    font-size: 20px;
-    color: #000;
+.name {
+  font-weight: 600;
+  background: var(--grad-primary);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradShift 4s ease-in-out infinite alternate;
 }
 
-
-
-.btn{
-    width: 100px;
-    height: 30px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background-color: white;
+.logoutBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: calc(var(--r-lg) - 4px);
+  color: rgba(239, 68, 68, 0.75);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t-fast);
 }
 
-
-
-.link:hover {
-    text-decoration: underline; 
+.logoutBtn:hover {
+  background: rgba(239, 68, 68, 0.07);
+  border-color: var(--c-red);
+  color: var(--c-red);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.18);
+  transform: translateY(-1px);
 }
 
-.active {
-    font-weight: bold; 
-    color: white; 
-}
-
-.userMenu{
-    display: flex;
-    gap: 20px;
-}
+.logoutBtn:active { transform: translateY(0); }

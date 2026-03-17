@@ -1,0 +1,134 @@
+.root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Full-screen SVG canvas ── */
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Gradient blobs ── */
+.blob1 {
+  animation: blobDrift1 22s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.blob2 {
+  animation: blobDrift2 28s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.blob3 {
+  animation: blobDrift3 20s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.blob4 {
+  animation: blobDrift4 25s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Floating triangles ── */
+.tri1 {
+  animation: float 9s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.tri2 {
+  animation: floatReverse 12s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.tri3 {
+  animation: float 15s ease-in-out infinite 2.5s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.tri4 {
+  animation: floatReverse 10s ease-in-out infinite 1s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Pulsing rings ── */
+.ring1 {
+  animation: ringExpand 7s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ring2 {
+  animation: ringExpand 9s ease-in-out infinite 1.8s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ring3 {
+  animation: ringExpand 11s ease-in-out infinite 3.5s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ring4 {
+  animation: ringExpand 8s ease-in-out infinite 5s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Floating dots ── */
+.dot1 { animation: dotBob 6s  ease-in-out infinite; }
+.dot2 { animation: dotBob 8s  ease-in-out infinite 1.2s; }
+.dot3 { animation: dotBob 7s  ease-in-out infinite 2.4s; }
+.dot4 { animation: dotBob 9s  ease-in-out infinite 0.6s; }
+.dot5 { animation: dotBob 5s  ease-in-out infinite 1.8s; }
+.dot6 { animation: dotBob 10s ease-in-out infinite 3.2s; }
+.dot7 { animation: dotBob 7s  ease-in-out infinite 4s;   }
+
+/* ── Cross markers ── */
+.cross1 { animation: float 13s ease-in-out infinite;         }
+.cross2 { animation: floatReverse 10s ease-in-out infinite 1s; }
+.cross3 { animation: float 8s ease-in-out infinite 4s;         }
+.cross4 { animation: floatReverse 14s ease-in-out infinite 2s; }
+
+/* ── Diamond shapes ── */
+.diamond1 {
+  animation: float 11s ease-in-out infinite 0.5s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.diamond2 {
+  animation: floatReverse 9s ease-in-out infinite 3s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Dashed connecting lines (CSS dash animation) ── */
+.conn1, .conn2, .conn3 {
+  stroke-dasharray: 5 8;
+  stroke-dashoffset: 0;
+  animation: dashMove 6s linear infinite;
+}
+.conn2 { animation-delay: -2s; }
+.conn3 { animation-delay: -4s; }
+
+@keyframes dashMove {
+  to { stroke-dashoffset: -52; }
+}
+
+/* ── Dot grid overlay ── */
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.11) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 28px 28px;
+}

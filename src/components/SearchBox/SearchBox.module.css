@@ -1,15 +1,66 @@
-.input{
-    border: 1px solid black;
-    height: 40px;
-    width: 410px;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-size: 25px;
-    
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 460px;
+  width: 100%;
+  animation: slideUp 0.4s var(--ease) 0.1s both;
 }
 
-.wrapper{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrap::before {
+  content: '⌕';
+  position: absolute;
+  left: 14px;
+  font-size: 1.1rem;
+  color: var(--text-4);
+  pointer-events: none;
+  transition: color var(--t-fast);
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.inputWrap:focus-within::before {
+  color: var(--c-indigo);
+}
+
+.input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px 0 42px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1.5px solid rgba(99, 102, 241, 0.14);
+  border-radius: var(--r-md);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  outline: none;
+  transition:
+    border-color var(--t-fast),
+    box-shadow   var(--t-fast);
+  caret-color: var(--c-indigo);
+}
+
+.input::placeholder {
+  color: var(--text-4);
+  font-style: italic;
+}
+
+.input:focus {
+  border-color: var(--c-indigo);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.10), var(--sh-xs);
 }

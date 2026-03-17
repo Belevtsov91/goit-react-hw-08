@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════════════
+   NexPhone — Light Hi-Tech Design System
+   Glassmorphism · Gradients · SVG Animations
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:        #f5f7ff;
+  --bg-2:      #eef1ff;
+  --bg-3:      #e8ecff;
+  --glass:     rgba(255, 255, 255, 0.82);
+  --glass-hi:  rgba(255, 255, 255, 0.96);
+
+  /* ── Brand Colors ── */
+  --c-indigo:  #4f46e5;
+  --c-violet:  #7c3aed;
+  --c-cyan:    #0ea5e9;
+  --c-pink:    #ec4899;
+  --c-emerald: #10b981;
+  --c-red:     #ef4444;
+  --c-amber:   #f59e0b;
+
+  /* ── Gradients ── */
+  --grad-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --grad-accent:  linear-gradient(135deg, #0ea5e9 0%, #4f46e5 100%);
+  --grad-warm:    linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+  --grad-full:    linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #0ea5e9 100%);
+  --grad-text:    linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0ea5e9 100%);
+  --grad-danger:  linear-gradient(135deg, #ef4444 0%, #ec4899 100%);
+
+  /* ── Text ── */
+  --text:   #0f172a;
+  --text-2: #334155;
+  --text-3: #64748b;
+  --text-4: #94a3b8;
+
+  /* ── Borders ── */
+  --b-light:  rgba(99, 102, 241, 0.10);
+  --b-mid:    rgba(99, 102, 241, 0.22);
+  --b-strong: rgba(99, 102, 241, 0.45);
+
+  /* ── Shadows ── */
+  --sh-xs: 0 1px 4px  rgba(79, 70, 229, 0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --sh-sm: 0 4px 12px rgba(79, 70, 229, 0.10), 0 1px 4px rgba(0,0,0,0.04);
+  --sh-md: 0 8px 28px rgba(79, 70, 229, 0.14), 0 2px 8px rgba(0,0,0,0.05);
+  --sh-lg: 0 16px 48px rgba(79, 70, 229, 0.18), 0 4px 16px rgba(0,0,0,0.07);
+  --sh-glow: 0 0 0 3px rgba(79, 70, 229, 0.14), 0 8px 24px rgba(79, 70, 229, 0.22);
+
+  /* ── Typography ── */
+  --font-heading: 'Orbitron', monospace;
+  --font-body:    'Inter', sans-serif;
+
+  /* ── Motion ── */
+  --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Radius ── */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+}
+
+/* ─── Reset ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ─── Typography ──────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+}
+
+a {
+  color: var(--c-indigo);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+a:hover { color: var(--c-violet); }
+
+/* ─── Gradient Text Utility ───────────────────────── */
+.grad-text {
+  background: var(--grad-text);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradShift 5s ease-in-out infinite alternate;
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.22);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(79, 70, 229, 0.40); }
+
+/* ─── Global Keyframes ────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+/* Gradient background-position shift */
+@keyframes gradShift {
+  0%   { background-position: 0%   50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Moving gradient for buttons & borders */
+@keyframes gradFlow {
+  0%   { background-position: 0%   0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* Spinning gradient border angle via @property */
+@property --grad-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotateBorder {
+  to { --grad-angle: 360deg; }
+}
+
+/* Pulse scale */
+@keyframes pulse {
+  0%,100% { transform: scale(1);    opacity: 1;   }
+  50%      { transform: scale(1.06); opacity: 0.8; }
+}
+
+/* Float for SVG shapes */
+@keyframes float {
+  0%,100% { transform: translateY(0)    rotate(0deg);  }
+  33%      { transform: translateY(-9px) rotate(3deg);  }
+  66%      { transform: translateY(-4px) rotate(-2deg); }
+}
+
+@keyframes floatReverse {
+  0%,100% { transform: translateY(0)    rotate(0deg);  }
+  33%      { transform: translateY(9px)  rotate(-3deg); }
+  66%      { transform: translateY(4px)  rotate(2deg);  }
+}
+
+/* SVG blob drift */
+@keyframes blobDrift1 {
+  0%   { transform: translate(0,   0)   scale(1);    }
+  100% { transform: translate(55px, 38px) scale(1.07); }
+}
+@keyframes blobDrift2 {
+  0%   { transform: translate(0,   0)    scale(1);    }
+  100% { transform: translate(-48px,-32px) scale(0.94); }
+}
+@keyframes blobDrift3 {
+  0%   { transform: translate(0, 0)    scale(1);    }
+  100% { transform: translate(-28px, 45px) scale(1.05); }
+}
+@keyframes blobDrift4 {
+  0%   { transform: translate(0, 0)    scale(1);    }
+  100% { transform: translate(38px, -38px) scale(0.96); }
+}
+
+/* Ring pulse */
+@keyframes ringExpand {
+  0%,100% { transform: scale(1);   opacity: 1;   }
+  50%      { transform: scale(1.35); opacity: 0; }
+}
+
+/* Dot bob */
+@keyframes dotBob {
+  0%,100% { transform: translateY(0);    opacity: 0.35; }
+  50%      { transform: translateY(-12px); opacity: 0.70; }
+}
+
+/* Shimmer sweep */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Spin */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Global Loader ───────────────────────────────── */
+.loader {
+  width: 42px;
+  height: 42px;
+  border: 2.5px solid rgba(79, 70, 229, 0.14);
+  border-top-color: var(--c-indigo);
+  border-radius: 50%;
+  animation: spin 0.72s linear infinite;
+  margin: 60px auto;
+  box-shadow: 0 0 18px rgba(79, 70, 229, 0.16);
+}

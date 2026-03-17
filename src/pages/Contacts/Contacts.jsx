@@ -5,20 +5,21 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { addContactThunk, deleteContactsThunk, fetchContacts } from "../../redux/contacts/operations.js";
 import { setFilter } from "../../redux/contacts/contactsSlice";
-import { selectIsLoggedIn, selectIsRefreshing } from "../../redux/auth/selectors"; 
+import { selectIsLoggedIn, selectIsRefreshing } from "../../redux/auth/selectors";
+import css from "./Contacts.module.css";
 
 const Contacts = () => {
     const contacts = useSelector((state) => state.contacts.items);
     const filter = useSelector((state) => state.contacts.filter);
     const isLoading = useSelector((state) => state.contacts.isLoading);
-    const isLoggedIn = useSelector(selectIsLoggedIn); 
-    const isRefreshing = useSelector(selectIsRefreshing); 
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const isRefreshing = useSelector(selectIsRefreshing);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!isLoggedIn || isRefreshing) return; 
-        dispatch(fetchContacts());  
-    }, [dispatch, isLoggedIn, isRefreshing]); 
+        if (!isLoggedIn || isRefreshing) return;
+        dispatch(fetchContacts());
+    }, [dispatch, isLoggedIn, isRefreshing]);
 
     const handleAddContact = (newContact) => {
         dispatch(addContactThunk(newContact));
@@ -33,24 +34,34 @@ const Contacts = () => {
     };
 
     const filteredValues = () => {
-        return contacts.filter(contact => 
+        return contacts.filter(contact =>
             contact.name.toLowerCase().includes(filter.toLowerCase())
         );
     };
 
-    return(
-        <div>
-            <h1>Phonebook</h1>
-            {isLoading && <h1>LOADING......</h1>}
-            <ContactForm addContact={handleAddContact} />
-            <SearchBox 
-                inputValue={filter} 
-                setInputValue={handleSetFilter} 
-            />
-            <ContactList 
-                contactData={filteredValues()} 
-                deleteContact={handleDeleteContact} 
-            />
+    return (
+        <div className={css.page}>
+            <h1 className={css.heading}>Phonebook</h1>
+
+            {isLoading && <div className="loader" />}
+
+            <div className={css.formSection}>
+                <ContactForm addContact={handleAddContact} />
+            </div>
+
+            <div className={css.searchSection}>
+                <SearchBox
+                    inputValue={filter}
+                    setInputValue={handleSetFilter}
+                />
+            </div>
+
+            <div className={css.listSection}>
+                <ContactList
+                    contactData={filteredValues()}
+                    deleteContact={handleDeleteContact}
+                />
+            </div>
         </div>
     );
 };

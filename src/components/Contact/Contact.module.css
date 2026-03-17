@@ -1,37 +1,134 @@
-.column{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--b-light);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-xs);
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow var(--t-base),
+    transform  var(--t-base),
+    border-color var(--t-base);
+  animation: slideIn 0.35s var(--ease) both;
 }
 
-.row{
-    display: flex;
-    gap: 20px;
-    align-items: center;
+/* Gradient left accent stripe — appears on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--grad-primary);
+  background-size: 100% 300%;
+  border-radius: var(--r-sm) 0 0 var(--r-sm);
+  opacity: 0;
+  transition: opacity var(--t-base);
+  animation: gradFlow 3s linear infinite;
 }
 
-.rowCenter{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 70px;
-    border: 1px solid black;
-    max-width: 400px;
-    border-radius: 15px;
-    padding: 10px;
-    margin-bottom: 10px;
+/* Shimmer sweep on hover */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.60) 50%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 250% center;
+  pointer-events: none;
+  transition: background-position 0.6s var(--ease);
 }
 
-.btn{
-    width: 100px;
-    height: 40px;
-    font-size: 24px;
-    font-weight: 500;
+.card:hover {
+  box-shadow: var(--sh-md);
+  transform: translateY(-3px);
+  border-color: var(--b-mid);
 }
 
-.text{
-    font-size: 24px;
-    font-weight: 800px;
-    margin: 0;
+.card:hover::before { opacity: 1; }
+.card:hover::after  { background-position: -250% center; }
+
+/* ── Info ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
 }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  opacity: 0.40;
+}
+
+.nameText {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phoneText {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text-3);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+}
+
+/* ── Delete button ── */
+.deleteBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--r-sm);
+  color: rgba(239, 68, 68, 0.70);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  position: relative;
+  z-index: 1;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.07);
+  border-color: var(--c-red);
+  color: var(--c-red);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.18);
+  transform: translateY(-1px);
+}
+
+.deleteBtn:active { transform: translateY(0); }

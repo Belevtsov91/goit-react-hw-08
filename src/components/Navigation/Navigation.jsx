@@ -1,24 +1,28 @@
 import { NavLink } from "react-router-dom";
-import { Link as MUILink } from '@mui/material';
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import css from "./Navigation.module.css";
 
+const getClass = ({ isActive }) =>
+    isActive
+        ? `${css.link} ${css.linkActive}`
+        : css.link;
+
 export const Navigation = () => {
-    const isLoggedIn = useSelector(selectIsLoggedIn); 
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
         <ul className={css.navList}>
             <li className={css.listItem}>
-                <MUILink component={NavLink} to="/" >
+                <NavLink to="/" end className={getClass}>
                     Home
-                </MUILink>
+                </NavLink>
             </li>
             {isLoggedIn && (
                 <li className={css.listItem}>
-                    <MUILink component={NavLink} to="/contacts">
+                    <NavLink to="/contacts" className={getClass}>
                         Contacts
-                    </MUILink>
+                    </NavLink>
                 </li>
             )}
         </ul>

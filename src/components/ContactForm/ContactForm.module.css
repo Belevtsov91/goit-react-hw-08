@@ -1,36 +1,114 @@
-.wrapper{
-    max-width: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    border: 1px solid black;
-    padding: 15px;
-    border-radius: 15px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--b-light);
+  border-radius: var(--r-xl);
+  padding: 28px 28px 24px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: var(--sh-sm);
+  animation: slideUp 0.4s var(--ease) both;
+  position: relative;
+  overflow: hidden;
 }
 
-.input{
-    width: 400px;
-    height: 30px;
-    border: 2px solid darkgrey;
+/* Gradient top accent */
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-full);
+  background-size: 300% auto;
+  animation: gradFlow 5s linear infinite;
 }
 
-.btn{
-    max-width: fit-content;
-    height: 40px;
-    font-size: 24px;
+.title {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 2px;
 }
 
-.itemWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.text{
-    font-size: 24px;
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
 }
 
-.error{
-    color: red;
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1.5px solid rgba(99, 102, 241, 0.14);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  outline: none;
+  transition:
+    border-color var(--t-fast),
+    box-shadow   var(--t-fast);
+  caret-color: var(--c-indigo);
 }
+
+.input::placeholder { color: var(--text-4); }
+
+.input:focus {
+  border-color: var(--c-indigo);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12), var(--sh-xs);
+}
+
+.error {
+  font-size: 0.73rem;
+  color: var(--c-red);
+  letter-spacing: 0.02em;
+}
+
+/* Gradient submit button */
+.btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 26px;
+  background: var(--grad-primary);
+  background-size: 200% auto;
+  border: none;
+  border-radius: var(--r-sm);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transition:
+    background-position var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-fast);
+  margin-top: 4px;
+}
+
+.btn:hover {
+  background-position: right center;
+  box-shadow: var(--sh-md);
+  transform: translateY(-2px);
+}
+
+.btn:active { transform: translateY(0); }

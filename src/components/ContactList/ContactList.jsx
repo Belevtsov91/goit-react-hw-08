@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
-
 import { selectFilteredContacts } from "../../redux/contacts/contactsSlice";
 import { deleteContactsThunk } from "../../redux/contacts/operations";
 
@@ -13,8 +12,11 @@ const ContactList = () => {
     dispatch(deleteContactsThunk(id));
   };
 
+  if (visibleContacts.length === 0) {
+    return <p className={css.empty}>No contacts found.</p>;
+  }
+
   return (
-    
     <ul className={css.list}>
       {visibleContacts.map((element) => (
         <li key={element.id} className={css.listItem}>

@@ -1,19 +1,27 @@
 import { NavLink } from "react-router-dom";
-import { Link as MUILink } from '@mui/material';
 import css from "./AuthNav.module.css";
+
+const getClass = ({ isActive }) =>
+    isActive
+        ? `${css.link} ${css.linkActive}`
+        : css.link;
 
 export const AuthNav = () => {
     return (
         <>
             <li className={css.listItem}>
-                <MUILink component={NavLink} to="/login">
+                <NavLink to="/login" className={getClass}>
                     Log In
-                </MUILink>
+                </NavLink>
             </li>
             <li className={css.listItem}>
-                <MUILink component={NavLink} to="/register">
+                <NavLink to="/register" className={({ isActive }) =>
+                    isActive
+                        ? `${css.link} ${css.linkCta} ${css.linkActive}`
+                        : `${css.link} ${css.linkCta}`
+                }>
                     Register
-                </MUILink>
+                </NavLink>
             </li>
         </>
     );
