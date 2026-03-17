@@ -1,33 +1,37 @@
+/* ══════════════════════════════════════
+   Home (logged-in) — mobile-first responsive
+   ══════════════════════════════════════ */
+
 .loggedInWrap {
-  min-height: calc(100vh - 68px);
+  min-height: calc(100vh - 62px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 32px 16px;
   animation: fadeIn 0.5s var(--ease) both;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-heading);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-emerald);
   background: rgba(16, 185, 129, 0.07);
   border: 1px solid rgba(16, 185, 129, 0.22);
   border-radius: 100px;
-  padding: 7px 20px;
-  margin-bottom: 28px;
+  padding: 6px 16px;
+  margin-bottom: 22px;
 }
 
 .badgeDot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--c-emerald);
   animation: pulse 1.8s ease-in-out infinite;
@@ -35,38 +39,38 @@
 
 .greeting {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-size: clamp(1.6rem, 6vw, 2.8rem);
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   background: var(--grad-text);
   background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradShift 5s ease-in-out infinite alternate;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .sub {
-  font-size: 1rem;
+  font-size: 0.93rem;
   color: var(--text-3);
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
 .contactsLink {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 34px;
+  padding: 13px 28px;
   background: var(--grad-primary);
   background-size: 200% auto;
   border: none;
   border-radius: var(--r-md);
   color: #fff;
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   text-decoration: none;
   box-shadow: var(--sh-md);
@@ -82,4 +86,26 @@
   box-shadow: var(--sh-lg);
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* ══════════════════
+   BREAKPOINTS
+   ══════════════════ */
+
+@media (min-width: 480px) {
+  .loggedInWrap { padding: 40px 20px; min-height: calc(100vh - 64px); }
+  .badge { font-size: 0.60rem; margin-bottom: 26px; }
+  .sub   { font-size: 1rem; margin-bottom: 32px; }
+  .contactsLink { padding: 13px 30px; font-size: 0.77rem; }
+}
+
+@media (min-width: 640px) {
+  .loggedInWrap { padding: 40px 24px; min-height: calc(100vh - 68px); }
+  .badge { letter-spacing: 0.18em; padding: 7px 20px; margin-bottom: 28px; }
+  .sub   { margin-bottom: 36px; }
+  .contactsLink { padding: 14px 34px; font-size: 0.78rem; letter-spacing: 0.12em; }
+}
+
+@media (min-width: 1024px) {
+  .loggedInWrap { padding: 48px 40px; }
 }

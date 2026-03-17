@@ -1,6 +1,45 @@
+/* ══════════════════════════════════════
+   App container — mobile-first responsive
+   320 → 480 → 640 → 768 → 1024 → 1280 → 1540
+   ══════════════════════════════════════ */
+
 .container {
-  max-width: 1280px;
-  padding-left: 24px;
-  padding-right: 24px;
+  /* Mobile: full width, tight padding */
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
   margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* 480px */
+@media (min-width: 480px) {
+  .container { max-width: 100%; }
+}
+
+/* 640px */
+@media (min-width: 640px) {
+  .container { max-width: 100%; }
+}
+
+/* 768px */
+@media (min-width: 768px) {
+  .container { max-width: 100%; }
+}
+
+/* 1024px */
+@media (min-width: 1024px) {
+  .container { max-width: 1024px; margin: 0 auto; }
+}
+
+/* 1280px */
+@media (min-width: 1280px) {
+  .container { max-width: 1280px; }
+}
+
+/* 1540px */
+@media (min-width: 1540px) {
+  .container { max-width: 1540px; }
 }

@@ -1,8 +1,12 @@
+/* ══════════════════════════════════════
+   SearchBox — mobile-first responsive
+   ══════════════════════════════════════ */
+
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  max-width: 460px;
+  max-width: 100%;
   width: 100%;
   animation: slideUp 0.4s var(--ease) 0.1s both;
 }
@@ -24,7 +28,7 @@
 .inputWrap::before {
   content: '⌕';
   position: absolute;
-  left: 14px;
+  left: 12px;
   font-size: 1.1rem;
   color: var(--text-4);
   pointer-events: none;
@@ -40,8 +44,8 @@
 
 .input {
   width: 100%;
-  height: 46px;
-  padding: 0 14px 0 42px;
+  height: 44px;
+  padding: 0 12px 0 38px;
   background: rgba(255, 255, 255, 0.90);
   border: 1.5px solid rgba(99, 102, 241, 0.14);
   border-radius: var(--r-md);
@@ -63,4 +67,19 @@
 .input:focus {
   border-color: var(--c-indigo);
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.10), var(--sh-xs);
+}
+
+/* ══════════════════
+   BREAKPOINTS
+   ══════════════════ */
+
+@media (min-width: 480px) {
+  .inputWrap::before { left: 13px; }
+  .input { height: 45px; padding: 0 13px 0 40px; }
+}
+
+@media (min-width: 640px) {
+  .wrapper { max-width: 460px; }
+  .inputWrap::before { left: 14px; }
+  .input { height: 46px; padding: 0 14px 0 42px; }
 }

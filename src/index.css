@@ -231,3 +231,65 @@ a:hover { color: var(--c-violet); }
   margin: 60px auto;
   box-shadow: 0 0 18px rgba(79, 70, 229, 0.16);
 }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE GLOBAL UTILITIES
+   Mobile-first: 320 → 480 → 640 → 768 → 1024 → 1280 → 1540
+   ═══════════════════════════════════════════════════ */
+
+/* Base (320px) — tightest typography */
+html {
+  font-size: 14.5px;
+}
+
+/* 480px */
+@media (min-width: 480px) {
+  html { font-size: 15px; }
+}
+
+/* 640px */
+@media (min-width: 640px) {
+  html { font-size: 15.5px; }
+}
+
+/* 768px */
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+
+  ::-webkit-scrollbar { width: 7px; }
+}
+
+/* 1024px */
+@media (min-width: 1024px) {
+  html { font-size: 16px; }
+}
+
+/* 1280px */
+@media (min-width: 1280px) {
+  html { font-size: 16.5px; }
+}
+
+/* 1540px */
+@media (min-width: 1540px) {
+  html { font-size: 17px; }
+}
+
+/* ── Responsive touch-friendly tap targets ── */
+@media (max-width: 639px) {
+  /* Ensure all interactive elements meet 44px min tap target */
+  button, a, input, select {
+    min-height: 44px;
+  }
+
+  /* Exception: inline links and small decorative elements */
+  a.inline { min-height: unset; }
+}
+
+/* ── Reduce motion for accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,24 +1,28 @@
+/* ══════════════════════════════════════
+   404 NotFound — mobile-first responsive
+   ══════════════════════════════════════ */
+
 .page {
-  min-height: calc(100vh - 68px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 32px 16px;
   animation: fadeIn 0.5s var(--ease) both;
   position: relative;
 }
 
 /* ── Animated SVG ── */
 .svgWrap {
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   animation: slideUp 0.6s var(--ease) both;
 }
 
 .nfSvg {
-  width: 200px;
-  height: 200px;
+  width: 130px;
+  height: 130px;
   overflow: visible;
 }
 
@@ -66,22 +70,22 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-heading);
-  font-size: 0.60rem;
-  letter-spacing: 0.22em;
+  font-size: 0.58rem;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
   color: var(--c-red);
   background: rgba(239, 68, 68, 0.07);
   border: 1px solid rgba(239, 68, 68, 0.22);
   border-radius: 100px;
-  padding: 6px 18px;
-  margin-bottom: 18px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
 }
 
 .code {
   font-family: var(--font-heading);
-  font-size: clamp(5rem, 16vw, 8.5rem);
+  font-size: clamp(4rem, 18vw, 8.5rem);
   font-weight: 900;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -91,43 +95,44 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradShift 4s ease-in-out infinite alternate;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   user-select: none;
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
   font-weight: 600;
   letter-spacing: 0.07em;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   animation: slideUp 0.6s var(--ease) 0.1s both;
 }
 
 .sub {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--text-3);
-  max-width: 380px;
+  max-width: 320px;
   line-height: 1.7;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   animation: slideUp 0.6s var(--ease) 0.2s both;
+  padding: 0 4px;
 }
 
 .homeLink {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 30px;
+  padding: 12px 26px;
   background: var(--grad-primary);
   background-size: 200% auto;
   border: none;
   border-radius: var(--r-md);
   color: #fff;
   font-family: var(--font-heading);
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   text-decoration: none;
   box-shadow: var(--sh-sm);
@@ -143,4 +148,32 @@
   box-shadow: var(--sh-md);
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* ══════════════════
+   BREAKPOINTS
+   ══════════════════ */
+
+@media (min-width: 480px) {
+  .nfSvg   { width: 160px; height: 160px; }
+  .svgWrap { margin-bottom: 28px; }
+  .badge   { font-size: 0.60rem; padding: 6px 16px; letter-spacing: 0.22em; margin-bottom: 16px; }
+  .sub     { font-size: 0.92rem; max-width: 360px; padding: 0; margin-bottom: 36px; }
+  .homeLink { padding: 13px 28px; font-size: 0.75rem; }
+}
+
+@media (min-width: 640px) {
+  .nfSvg   { width: 200px; height: 200px; }
+  .svgWrap { margin-bottom: 36px; }
+  .sub     { font-size: 0.95rem; max-width: 380px; margin-bottom: 40px; }
+  .homeLink { padding: 13px 30px; font-size: 0.76rem; letter-spacing: 0.12em; }
+}
+
+@media (min-width: 768px) {
+  .page { padding: 40px 24px; }
+  .homeLink { padding: 14px 32px; }
+}
+
+@media (min-width: 1024px) {
+  .page { padding: 48px 40px; }
 }

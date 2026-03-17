@@ -1,9 +1,13 @@
+/* ══════════════════════════════════════
+   Contact card — mobile-first responsive
+   ══════════════════════════════════════ */
+
 .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 14px 14px;
   background: var(--glass);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -19,7 +23,7 @@
   animation: slideIn 0.35s var(--ease) both;
 }
 
-/* Gradient left accent stripe — appears on hover */
+/* Gradient left accent stripe */
 .card::before {
   content: '';
   position: absolute;
@@ -52,7 +56,7 @@
 
 .card:hover {
   box-shadow: var(--sh-md);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--b-mid);
 }
 
@@ -63,7 +67,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
   flex: 1;
 }
@@ -71,18 +75,18 @@
 .row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .icon {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
-  opacity: 0.40;
+  opacity: 0.38;
 }
 
 .nameText {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
   margin: 0;
@@ -93,7 +97,7 @@
 }
 
 .phoneText {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: var(--text-3);
   margin: 0;
@@ -107,15 +111,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 7px 16px;
+  padding: 6px 10px;
   background: transparent;
   border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: var(--r-sm);
   color: rgba(239, 68, 68, 0.70);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.73rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all var(--t-fast);
@@ -132,3 +136,29 @@
 }
 
 .deleteBtn:active { transform: translateY(0); }
+
+/* ══════════════════
+   BREAKPOINTS
+   ══════════════════ */
+
+@media (min-width: 480px) {
+  .card { padding: 15px 16px; gap: 16px; }
+  .nameText { font-size: 0.92rem; }
+  .phoneText { font-size: 0.85rem; }
+  .deleteBtn { padding: 6px 13px; font-size: 0.75rem; }
+  .icon { width: 16px; height: 16px; }
+}
+
+@media (min-width: 640px) {
+  .card { padding: 18px 20px; gap: 20px; }
+  .info { gap: 10px; }
+  .row  { gap: 10px; }
+  .nameText  { font-size: 0.95rem; }
+  .phoneText { font-size: 0.88rem; }
+  .deleteBtn { padding: 7px 16px; font-size: 0.78rem; letter-spacing: 0.06em; }
+  .icon { width: 17px; height: 17px; }
+}
+
+@media (min-width: 1024px) {
+  .card:hover { transform: translateY(-3px); }
+}

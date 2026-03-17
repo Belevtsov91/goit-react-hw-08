@@ -1,19 +1,31 @@
+/* ══════════════════════════════════════
+   UserMenu — mobile-first responsive
+   ══════════════════════════════════════ */
+
+/* Mobile: full-width row with space-between */
 .userMenu {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 6px 6px 6px 16px;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
   background: rgba(79, 70, 229, 0.05);
   border: 1px solid rgba(79, 70, 229, 0.12);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-md);
   animation: fadeIn 0.4s var(--ease) both;
+  margin-top: 4px;
 }
 
 .greeting {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-3);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .name {
@@ -29,19 +41,20 @@
 .logoutBtn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
+  gap: 5px;
+  padding: 7px 14px;
   background: transparent;
   border: 1px solid rgba(239, 68, 68, 0.28);
-  border-radius: calc(var(--r-lg) - 4px);
+  border-radius: var(--r-sm);
   color: rgba(239, 68, 68, 0.75);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.80rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all var(--t-fast);
+  flex-shrink: 0;
 }
 
 .logoutBtn:hover {
@@ -53,3 +66,32 @@
 }
 
 .logoutBtn:active { transform: translateY(0); }
+
+/* ══════════════════
+   BREAKPOINTS
+   ══════════════════ */
+
+/* 640px+ — compact pill on desktop nav */
+@media (min-width: 640px) {
+  .userMenu {
+    width: auto;
+    justify-content: initial;
+    gap: 14px;
+    padding: 6px 6px 6px 14px;
+    border-radius: var(--r-lg);
+    margin-top: 0;
+  }
+
+  .greeting { font-size: 0.82rem; }
+
+  .logoutBtn {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* 1024px+ */
+@media (min-width: 1024px) {
+  .userMenu { padding: 6px 6px 6px 16px; gap: 16px; }
+}
